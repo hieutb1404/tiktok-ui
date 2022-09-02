@@ -1,5 +1,9 @@
 import { useEffect, useState, useRef } from 'react';
 import classNames from 'classnames/bind';
+<<<<<<< HEAD
+=======
+
+>>>>>>> a23311dee131d144f7e8ed8a1f31cee639ee3a0e
 import {
     faCircleXmark,
     faSpinner,
@@ -8,8 +12,11 @@ import {
 import HeadlessTippy from '@tippyjs/react/headless';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+<<<<<<< HEAD
 import * as searchServices from '~/apiServices/searchServices';
 
+=======
+>>>>>>> a23311dee131d144f7e8ed8a1f31cee639ee3a0e
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
 import { SearchIcon } from '~/components/Icons';
@@ -28,7 +35,11 @@ function Search() {
     const [loading, setLoading] = useState(false);
 
     const inputRef = useRef();
+<<<<<<< HEAD
     // mặc định lần đầu tiên là rỗng
+=======
+
+>>>>>>> a23311dee131d144f7e8ed8a1f31cee639ee3a0e
     const debounced = useDebounce(searchValue, 500);
 
     useEffect(() => {
@@ -41,6 +52,7 @@ function Search() {
             setSearchResult([]);
             return;
         }
+<<<<<<< HEAD
         const fetchApi = async () => {
             setLoading(true);
 
@@ -50,6 +62,25 @@ function Search() {
             setLoading(false);
         };
         fetchApi();
+=======
+        setLoading(true);
+
+        fetch(
+            `https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(
+                debounced,
+            )}&type=less`,
+        )
+            .then((res) => res.json())
+            .then((res) => {
+                setSearchResult(res.data);
+                setLoading(false);
+            })
+            // mất mạng mất wifi thì để nó dừng luôn
+            // lỗi sẽ đưa vào catch
+            .catch(() => {
+                setLoading(false);
+            });
+>>>>>>> a23311dee131d144f7e8ed8a1f31cee639ee3a0e
     }, [debounced]);
 
     const handleClear = () => {
