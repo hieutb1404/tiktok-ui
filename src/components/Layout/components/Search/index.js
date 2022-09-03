@@ -1,9 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import classNames from 'classnames/bind';
-<<<<<<< HEAD
-=======
 
->>>>>>> a23311dee131d144f7e8ed8a1f31cee639ee3a0e
 import {
     faCircleXmark,
     faSpinner,
@@ -12,11 +9,8 @@ import {
 import HeadlessTippy from '@tippyjs/react/headless';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-<<<<<<< HEAD
 import * as searchServices from '~/apiServices/searchServices';
 
-=======
->>>>>>> a23311dee131d144f7e8ed8a1f31cee639ee3a0e
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
 import { SearchIcon } from '~/components/Icons';
@@ -35,11 +29,8 @@ function Search() {
     const [loading, setLoading] = useState(false);
 
     const inputRef = useRef();
-<<<<<<< HEAD
     // mặc định lần đầu tiên là rỗng
-=======
 
->>>>>>> a23311dee131d144f7e8ed8a1f31cee639ee3a0e
     const debounced = useDebounce(searchValue, 500);
 
     useEffect(() => {
@@ -52,7 +43,7 @@ function Search() {
             setSearchResult([]);
             return;
         }
-<<<<<<< HEAD
+
         const fetchApi = async () => {
             setLoading(true);
 
@@ -62,7 +53,7 @@ function Search() {
             setLoading(false);
         };
         fetchApi();
-=======
+
         setLoading(true);
 
         fetch(
@@ -80,7 +71,6 @@ function Search() {
             .catch(() => {
                 setLoading(false);
             });
->>>>>>> a23311dee131d144f7e8ed8a1f31cee639ee3a0e
     }, [debounced]);
 
     const handleClear = () => {
@@ -91,6 +81,13 @@ function Search() {
 
     const handleHideResult = () => {
         setShowResult(false);
+    };
+    // nếu ko bắt đầu bằng dấu cách
+    const handleChange = (e) => {
+        const searchValue = e.target.value;
+        if (!searchValue.startsWith(' ')) {
+            setSearchValue(searchValue);
+        }
     };
 
     return (
@@ -112,10 +109,10 @@ function Search() {
             <div className={cx('search')}>
                 <input
                     ref={inputRef}
-                    value={searchValue.trim() === '' ? '' : searchValue}
+                    value={searchValue}
                     placeholder="Search accounts and videos"
                     spellCheck="false"
-                    onChange={(e) => setSearchValue(e.target.value)}
+                    onChange={handleChange}
                     onFocus={() => setShowResult(true)}
                 />
                 {/* {!!searchValue && !loading && (
@@ -130,7 +127,15 @@ function Search() {
                     />
                 )}
 
-                <button className={cx('search-btn')}>
+                <button
+                    className={cx('search-btn')}
+                    /**  onMouseDown là chỉ ấn ko nhấc lên ko như onlick ấn vào nhấc lên mới ăn
+                     * hành vi mặc định của icon search là khi ấn vào nó đã hiện boder rồi
+                     * nên ta phải dùng onMouseDown để đúng hành vi của nó
+                     * preventDefault là bỏ đi mặc dịnh nó đang đc css hoặc đang có
+                     */
+                    onMouseDown={(e) => e.preventDefault()}
+                >
                     <SearchIcon />
                 </button>
             </div>
