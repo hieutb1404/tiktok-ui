@@ -61,6 +61,31 @@ a[href] {
     src: url('/assets/Fonts/Proxima-Nova-Regular\ \(1\).woff2');
     font-weight: 700;
 }
+//Scrollbar css
+html *::-webkit-scrollbar {
+    border-radius: 0;
+    width: 8px;
+}
+html *::-webkit-scrollbar {
+    border-radius: 0;
+    width: 8px;
+}
+html *::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.15);
+}
+html *::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.15);
+}
+html *::-webkit-scrollbar-track {
+    border-radius: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
+html *::-webkit-scrollbar-track {
+    border-radius: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
 
 // custom tipppy tooltip
 body {
@@ -70,6 +95,7 @@ body {
         font-size: 1.6rem;
         line-height: 2.2rem;
         background-color: rgba(84, 84, 84, 0.92);
+        overflow-y: overlay;
     }
 
     .tippy-arrow {

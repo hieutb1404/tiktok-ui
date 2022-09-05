@@ -91,55 +91,62 @@ function Search() {
     };
 
     return (
-        <HeadlessTippy
-            interactive
-            visible={showResult && searchResult.length > 0}
-            render={(attrs) => (
-                <div className={cx('search-result')} tabIndex="-1" {...attrs}>
-                    <PopperWrapper>
-                        <h4 className={cx('search-title')}>Accounts</h4>
-                        {searchResult.map((result) => (
-                            <AccountItem key={result.id} data={result} />
-                        ))}
-                    </PopperWrapper>
-                </div>
-            )}
-            onClickOutside={handleHideResult}
-        >
-            <div className={cx('search')}>
-                <input
-                    ref={inputRef}
-                    value={searchValue}
-                    placeholder="Search accounts and videos"
-                    spellCheck="false"
-                    onChange={handleChange}
-                    onFocus={() => setShowResult(true)}
-                />
-                {/* {!!searchValue && !loading && (
-                    <button className={cx('clear')} onClick={handleClear}>
-                        <FontAwesomeIcon icon={faCircleXmark} />
-                    </button>
-                )} */}
-                {loading && (
-                    <FontAwesomeIcon
-                        className={cx('loading')}
-                        icon={faSpinner}
-                    />
+        // dùng thẻ div bọc HeadlessTippy để bỏ warning tippy
+        <div>
+            <HeadlessTippy
+                interactive
+                visible={showResult && searchResult.length > 0}
+                render={(attrs) => (
+                    <div
+                        className={cx('search-result')}
+                        tabIndex="-1"
+                        {...attrs}
+                    >
+                        <PopperWrapper>
+                            <h4 className={cx('search-title')}>Accounts</h4>
+                            {searchResult.map((result) => (
+                                <AccountItem key={result.id} data={result} />
+                            ))}
+                        </PopperWrapper>
+                    </div>
                 )}
+                onClickOutside={handleHideResult}
+            >
+                <div className={cx('search')}>
+                    <input
+                        ref={inputRef}
+                        value={searchValue}
+                        placeholder="Search accounts and videos"
+                        spellCheck="false"
+                        onChange={handleChange}
+                        onFocus={() => setShowResult(true)}
+                    />
+                    {/* {!!searchValue && !loading && (
+                        <button className={cx('clear')} onClick={handleClear}>
+                            <FontAwesomeIcon icon={faCircleXmark} />
+                        </button>
+                    )} */}
+                    {loading && (
+                        <FontAwesomeIcon
+                            className={cx('loading')}
+                            icon={faSpinner}
+                        />
+                    )}
 
-                <button
-                    className={cx('search-btn')}
-                    /**  onMouseDown là chỉ ấn ko nhấc lên ko như onlick ấn vào nhấc lên mới ăn
-                     * hành vi mặc định của icon search là khi ấn vào nó đã hiện boder rồi
-                     * nên ta phải dùng onMouseDown để đúng hành vi của nó
-                     * preventDefault là bỏ đi mặc dịnh nó đang đc css hoặc đang có
-                     */
-                    onMouseDown={(e) => e.preventDefault()}
-                >
-                    <SearchIcon />
-                </button>
-            </div>
-        </HeadlessTippy>
+                    <button
+                        className={cx('search-btn')}
+                        /**  onMouseDown là chỉ ấn ko nhấc lên ko như onlick ấn vào nhấc lên mới ăn
+                         * hành vi mặc định của icon search là khi ấn vào nó đã hiện boder rồi
+                         * nên ta phải dùng onMouseDown để đúng hành vi của nó
+                         * preventDefault là bỏ đi mặc dịnh nó đang đc css hoặc đang có
+                         */
+                        onMouseDown={(e) => e.preventDefault()}
+                    >
+                        <SearchIcon />
+                    </button>
+                </div>
+            </HeadlessTippy>
+        </div>
     );
 }
 
