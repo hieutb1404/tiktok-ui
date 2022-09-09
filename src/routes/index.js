@@ -1,6 +1,6 @@
-import routesConfig from '~/config/routes';
+import Config from '~/config';
 //Layouts
-import { HeaderOnly } from '~/components/Layout';
+import HeaderOnly from '~/layouts/HeaderOnly';
 //pages
 import Home from '~/pages/Home';
 import Following from '~/pages/Following';
@@ -15,11 +15,11 @@ import Search from '~/pages/Search';
  * khi đó 2 kí tự @ khớp nhau thì link account mới vào đc profile
  */
 const publicRoutes = [
-    { path: routesConfig.home, component: Home },
-    { path: routesConfig.following, component: Following },
-    { path: routesConfig.profile, component: Profile },
-    { path: routesConfig.upload, component: Upload, layout: HeaderOnly },
-    { path: routesConfig.search, component: Search, layout: null },
+    { path: Config.routes.home, component: Home },
+    { path: Config.routes.following, component: Following },
+    { path: Config.routes.profile, component: Profile },
+    { path: Config.routes.upload, component: Upload, layout: HeaderOnly },
+    { path: Config.routes.search, component: Search, layout: null },
 ];
 const privateRoutes = [];
 

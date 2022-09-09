@@ -54,6 +54,7 @@
     },
     "devDependencies": {
         "babel-plugin-module-resolver": "^4.1.0",
+        "eslint-plugin-disable": "^2.0.3",
         "sass": "^1.54.2"
     }
 }

@@ -1,4 +1,5 @@
 import {
+    // eslint-disable-next-line
     faChevronCircleLeft,
     faChevronLeft,
 } from '@fortawesome/free-solid-svg-icons';
