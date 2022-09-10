@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import {
     // eslint-disable-next-line
     faChevronCircleLeft,
@@ -19,5 +20,9 @@ function Header({ title, onBack }) {
         </header>
     );
 }
+Header.propTypes = {
+    title: PropTypes.string.isRequired,
+    onBack: PropTypes.func.isRequired,
+};
 
 export default Header;
