@@ -4,7 +4,7 @@ import './GlobalStyles.scss';
 function GlobalStyles({ children }) {
     return children;
 }
-GlobalStyles.PropTypes = {
+GlobalStyles.propTypes = {
     children: PropTypes.node.isRequired,
 };
 
